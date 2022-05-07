@@ -62,4 +62,10 @@ public class SnapToReset : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
     }
+    public void resetFromOutZone() 
+    {
+        gameObject.transform.position = Reset.transform.position;
+        gameObject.transform.rotation = Reset.transform.rotation;
+        rb.velocity = Vector3.zero;
+    }
 }

@@ -11,8 +11,11 @@ public class Phone : MonoBehaviour
     public List<AudioClip> audioClips;
     [SerializeField] AudioSource audioSource;
     [SerializeField] TextMesh CodeText;
+    [SerializeField] GameObject tasks; 
+
     void Start()
     {
+        
         Code = "XXXX";
     }
 
@@ -20,6 +23,11 @@ public class Phone : MonoBehaviour
     void FixedUpdate()
     {
         CodeText.text = Code;
+        if(Code == CorrCode) 
+        {
+            tasks.GetComponent<Tasks>().addPoint();
+            Code = "XXXX";
+        }
         //if (!audioSource.isPlaying) { audioSource.PlayOneShot(audioClips[i]); i++; }
 
         
@@ -36,6 +44,16 @@ public class Phone : MonoBehaviour
         }
         Debug.Log(Code);
     }
+    public void setCorrCode(string code) 
+    {
+        CorrCode = code;
+    }
+    public void failedTask() 
+    {
+        tasks.GetComponent<Tasks>().subPoint();
+        CorrCode = "ABCD";
+    }
+
 
     
 

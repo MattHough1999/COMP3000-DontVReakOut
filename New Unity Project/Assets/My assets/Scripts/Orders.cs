@@ -6,12 +6,14 @@ public class Orders : MonoBehaviour
 {
     [SerializeField] List<GameObject> paperSizes;
     [SerializeField] List<Color> paperColour;
+    [SerializeField] GameObject placeHolder;
 
-    int difficulty;
-    int complexity;
+    int difficulty = 2;
+    int complexity = 2;
     // Start is called before the first frame update
     void Start()
     {
+        /*
         if (PlayerPrefs.GetInt("difficulty") != 0 ) 
         {
             difficulty = PlayerPrefs.GetInt("difficulty");
@@ -20,17 +22,12 @@ public class Orders : MonoBehaviour
         {
             complexity = PlayerPrefs.GetInt("complexity");
         }
-        int numOrders = Random.Range(0, difficulty);
-        order[] orders = new order[numOrders];
-        for(int i = 0; i<= orders.Length; i++) 
-        {
-            orders[i] = makeRandomOrder(complexity);
-        }
+        */        
     }
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(orders[1].Pages[1].Colour);
     }
 
     public struct order
@@ -63,6 +60,17 @@ public class Orders : MonoBehaviour
             this.Scanned = scanned;
         }
     }
+    public void makeOrders() 
+    {
+        int numOrders = Random.Range(0, difficulty);
+        order[] orders = new order[numOrders];
+        for (int i = 0; i < orders.Length; )
+        {
+            orders[i] = makeRandomOrder(complexity);
+            i++;
+        }
+        
+    }
 
     public order makeOrder(bool complete, string name, page[] pages)
     {
@@ -80,11 +88,13 @@ public class Orders : MonoBehaviour
     public page[] makePages(int numPages) 
     {
         page[] pages = new page[numPages];
-        for(int i = 0; i <= numPages; i++) 
+        for(int i = 0; i < numPages; i++) 
         {
+            Debug.Log("Making Page" + i);
             pages[i] = makePage(i);
+            Debug.Log("Made Page" + i);
         }
-        return null;
+        return pages;
     }
     public page makePage(int num) 
     {
