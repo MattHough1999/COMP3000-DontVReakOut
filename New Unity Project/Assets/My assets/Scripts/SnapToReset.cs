@@ -30,20 +30,6 @@ public class SnapToReset : MonoBehaviour
         }
     }
 
-    /*
-
-    private void OnTriggerStay(Collider collision)
-    {
-        Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.name == Reset.gameObject.name)
-        {
-            inZone = true;
-            Debug.Log("InZone");
-        }
-    }
-
-    */
-
     private void OnTriggerExit(Collider collision)
     {
         Debug.Log(collision.gameObject.name);

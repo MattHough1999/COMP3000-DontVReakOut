@@ -15,7 +15,6 @@ public class Phone : MonoBehaviour
 
     void Start()
     {
-        
         Code = "XXXX";
     }
 
@@ -28,9 +27,6 @@ public class Phone : MonoBehaviour
             tasks.GetComponent<Tasks>().addPoint();
             Code = "XXXX";
         }
-        //if (!audioSource.isPlaying) { audioSource.PlayOneShot(audioClips[i]); i++; }
-
-        
     }
     public void addDigit(string letter) 
     {

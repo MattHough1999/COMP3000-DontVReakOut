@@ -7,7 +7,7 @@ public class Kettle : MonoBehaviour
 {
     [SerializeField] GameObject tasks;
     [SerializeField] SnapToReset reset;
-    //[SerializeField] Collider collider;
+    
     float boilTimer = 5;
     public bool onBoil = false;
     // Start is called before the first frame update

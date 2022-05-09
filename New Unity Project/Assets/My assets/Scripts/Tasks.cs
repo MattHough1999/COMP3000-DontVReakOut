@@ -8,7 +8,7 @@ public class Tasks : MonoBehaviour
 {
     [SerializeField] GameObject phone, COD, fireAlarm, kettle;
     [SerializeField] TextMeshPro win, loss, taskText,timeText;
-    float timer = 1000;
+    float timer = 300;
     int completedTasks = 0, failedTasks = 0, task = 10;
     bool taskInProgress = false;
     
@@ -26,7 +26,7 @@ public class Tasks : MonoBehaviour
         {
             PlayerPrefs.SetInt("completedTasks",completedTasks);
             PlayerPrefs.SetInt("failedTasks", failedTasks);
-            SceneManager.LoadScene("End");
+            Application.Quit();
         }
         timer = timer - Time.deltaTime;
         timeText.text = "Time Remaining: " + timer.ToString();
@@ -52,8 +52,6 @@ public class Tasks : MonoBehaviour
                     kettle.GetComponent<Kettle>().failedTask();
                     break;
             }
-            Debug.Log("Failed Task: " + task);
-            // MAKE SURE subPoint(); IS IN ALL FAILED TASK METHODS
         }
         task = Random.Range(0, 4);
         
